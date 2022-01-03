@@ -1,0 +1,51 @@
+<div class="animate__animated animate__fadeInDown">
+    <div class="alert alert-info" *ngIf="!pais; else divPais">
+        Cargando...
+    </div>
+
+    <ng-template #divPais>
+        <div class="row">
+            <div class="col-12">
+                <h1>Pais: <small>{{pais.name.common}}</small></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <h3>Bandera</h3>
+                <img [src]="pais.flags.png" alt="Bandera del país" class="img-thumbnail" />
+            </div>
+            <div class="col">
+                <h3>Información</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <b>Capital: </b>{{pais.capital}}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Población: </b>{{pais.population | number}}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Region: </b>{{pais.region}}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Google maps: </b> <a [href]="pais.maps.googleMaps"
+                            target="_blank">{{pais.maps.googleMaps}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <h3>Traducciones</h3>
+            <div class="col">
+                <span class="badge bg-primary ms-1" title="Francés">{{pais.translations['fra'].common}}</span>
+                <span class="badge bg-primary ms-1" title='Español'>{{pais.translations['spa'].common}}</span>
+                <span class="badge bg-primary ms-1" title='Italiano'>{{pais.translations['ita'].common}}</span>
+                <span class="badge bg-primary ms-1" title='Japonés'>{{pais.translations['jpn'].common}}</span>
+                <span class="badge bg-primary ms-1" title='Ruso'>{{pais.translations['rus'].common}}</span>
+                <span class="badge bg-primary ms-1" title='Árabe'>{{pais.translations['ara'].common}}</span>
+            </div>
+        </div>
+    </ng-template>
+
+    <button class="btn btn-primary mt-5" (click)="volver()"> Volver </button>
+</div>
